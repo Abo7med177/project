@@ -66,7 +66,7 @@ client.on("messageCreate", async (m) => {
         .setTimestamp()
       ]
     })
-   await db.add(`point-ac${message.author.id}`, 1)
+    db.add(`point-ac${message.author.id}`, 1)
     m.guild.channels.cache.get("1130274633137004634").send({
       embeds: [
         new MessageEmbed()

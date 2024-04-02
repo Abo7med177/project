@@ -39,6 +39,7 @@ client.on("messageCreate", async m => {
         const point = db.fetch(`points${user.id}`) || 0
         const ticket = db.fetch(`point-ticket${user.id}`) || 0
         const ac = db.fetch(`point-ac${user.id}`) || 0
+        const game = db.fetch(`point-game${user.id}`) || 0
         const embed = new MessageEmbed()
         .setColor("YELLOW")
         .setTitle(`استعلام النقاط :`)
@@ -49,8 +50,10 @@ client.on("messageCreate", async m => {
     \`${ticket}\`
     - نقاط مضافه : 
     \`${point}\`
+    - نقاط الاقيام : 
+    \`${game}\`
     - مجموعهم : 
-    ${point + ac + ticket}
+    ${point + ac + ticket + game}
               **`)
       m.reply({embeds: [embed]})
     }

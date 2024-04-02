@@ -183,7 +183,7 @@ await i.reply({content: "تم بدا الرحله بنجاح | <:GOLDEN83:113493
             
             **__`
         })
-        await i.reply({content: "تم تأكيد الاقلاع بنجاح  | <:GOLDEN83:1134936709205864458> ",ephemeral: true})
-
+        await i.reply({content: "تم تأكيد الاقلاع بنجاح واعطائم نقطه اقيام  | <:GOLDEN83:1134936709205864458> ",ephemeral: true})
+db.add(`point-game${i.user.id}`, 1)
     }
 })
