@@ -5,6 +5,9 @@ const client = new Client({
 });
 module.exports = client;
 
+const { Database } = require("npm.db")
+const db = new Database("database.json")
+
 // Global Variables
 client.commands = new Collection();
 client.slashCommands = new Collection();
@@ -45,7 +48,7 @@ client.on("messageCreate", async (m) => {
       const role2 = m.guild.roles.cache.get("1222298908227665941")
       member.roles.add(role).catch(() => 0)
       member.roles.add(role1).catch(() => 0)
-      member.roles.add(role2).catch(() => 0)
+      member.roles.remove(role2).catch(() => 0)
   member.setNickname(`${ar}#${num}`).then(() => {
     message.reply({
       embeds: [
@@ -53,15 +56,17 @@ client.on("messageCreate", async (m) => {
         .setTitle("تفعيل عضو جديد | ✅")
         .setColor("YELLOW")
         .setDescription(`**
-  - id : ${ar}
-  - identity : ${num}
-  - member : ${member.id}
+  - id&هويه : ${ar}
+  - member : ${member}
   - by : ${m.author}
+  - points mangement : 1
         **`)
+       
         .setAuthor(m.author.tag, m.author.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
       ]
     })
+   await db.add(`point-ac${message.author.id}`, 1)
     m.guild.channels.cache.get("1130274633137004634").send({
       embeds: [
         new MessageEmbed()
