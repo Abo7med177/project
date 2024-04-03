@@ -204,7 +204,7 @@ client.on("messageCreate", async(m) => {
 })
 client.on("messageCreate", async(m) => {
   if(m.content.startsWith(prefix + "تصفير")) {
-     if(!m.member.roles.cache.has("1189853904511455283")) return;
+     if(!m.member.roles.cache.has("ADMINISTRATOR")) return;
     try {
     db.deleteAll()
       m.reply(`تمت عمليه تصفير السيرفر بنجاح | ${m.guild.name}`)

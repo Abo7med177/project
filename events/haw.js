@@ -1,6 +1,8 @@
 const client = require("./../index")
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require("discord.js")
 const { Modal, TextInputComponent } = require("discord.js")
+const ID = require("./../models/haw")
+const Canvas = require("canvas")
 client.on("messageCreate", async(message) => {
     if(message.content.startsWith("#menu")) {
 
@@ -33,7 +35,34 @@ client.on("messageCreate", async(message) => {
             embeds: [em],
             components: [a1]
         })
-    }
+    } 
+    if (message.content.startsWith("=هوية")) {
+        let member = message.mentions.members.first() || message.member;
+        let data = await ID.findOne({ user: member.id,  condition: "تم قبول الهويه" });
+        if (!data) return message.reply({ content: ":x: - العضو لا يملك هوية" });
+        let image = await Canvas.loadImage(
+    "https://cdn.discordapp.com/attachments/1117833577531457666/1224763868753170532/image__8_-removebg-preview.png?ex=661ead3d&is=660c383d&hm=928edf13b3925e0e9520c3fe6666bf40a09549f338abbe859d284542cb74987c&"
+        );
+        let canvas = Canvas.createCanvas(image.width, image.height);
+        let ctx = canvas.getContext("2d");
+        await ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        ctx.textAlign = "end";
+        const fontSize = 77;
+        const fontFamily = "Arial";
+        ctx.font = `${fontSize}px ${fontFamily}`;
+        await ctx.fillText(data.name, 1800, 400);
+        await ctx.fillText(data.snh, 1835, 530);
+        await ctx.fillText(data.haw, 1760, 660);
+        await ctx.fillText(data.mylad, 1650, 790);
+        ctx.font = `50px ${fontFamily}`;
+        ctx.fillStyle ="white"
+       
+        await ctx.fillText("وزارة الداخلية", 1045, 1020);
+        await ctx.fillText(data.noww, 1940, 1020);
+        const img = await Canvas.loadImage(data.url);
+        await ctx.drawImage(img, 100, 293,425,560);
+        message.reply({ files: [canvas.createJPEGStream()] });
+      }
 })
 client.on("interactionCreate", async(interaction) => {
     const inter = interaction
@@ -240,6 +269,9 @@ components :[
                                 )
 ]
                     })
+                    getMember.roles.remove(i.guild.roles.cache.get("1117886666024161373")).catch(()=> 0)
+                    getMember.roles.add(i.guild.roles.cache.get("1117886479948070972")).catch(()=> 0)
+
                 }
             }
             if(i.customId == "18") {
