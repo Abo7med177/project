@@ -193,7 +193,7 @@ client.on('interactionCreate', async interaction => {
     });
   }
 });
-
+/*
 process.on("uncaughtException", (error) => {
   return;
 });
@@ -205,3 +205,4 @@ process.on("unhandledRejection", (error) => {
 process.on("rejectionHandled", (error) => {
   return;
 });
+*/

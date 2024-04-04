@@ -1,7 +1,7 @@
 {
-    "token": "OTQ3OTIwMzM2NzAyMjkxOTc4.GgCmVy.PpcXimZT5g8v5vmjUTR4qx39Y-3MPYGpRMF31Q",
+    "token": "======================================",
     "prefix": "=",
-    "mongooseConnectionString": "mongodb+srv://FALCON:0500886723r@cluster0.ua1seab.mongodb.net/?retryWrites=true&w=majority",
+    "mongooseConnectionString": "mongodb+srv://<>:<>@cluster0.ua1seab.mongodb.net/?retryWrites=true&w=majority",
 
 "haw3": "1118679365031563326",
 "a7oal": "1117886247013204030",

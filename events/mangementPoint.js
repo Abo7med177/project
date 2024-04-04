@@ -1,7 +1,7 @@
 // تعاريف :
 const { Database } = require("npm.db")
 const db = new Database("database.json")
-const client = require("discord.js")
+const client = require("./../index")
 const {MessageEmbed,MessageActionRow,MessageButton} = require("discord.js")
 const mangement = "1117855649720709181"
 const prefix = "#"
